@@ -1,0 +1,957 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA2AE44B2AEB980700D24008 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2AE44A2AEB980700D24008 /* App.swift */; };
+		FA2AE44F2AEB980800D24008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA2AE44E2AEB980800D24008 /* Assets.xcassets */; };
+		FA2AE4522AEB980800D24008 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA2AE4512AEB980800D24008 /* Preview Assets.xcassets */; };
+		FA2AE4602AEB9CA000D24008 /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2AE45F2AEB9CA000D24008 /* CLI.swift */; };
+		FA2EAD912AEC4C49000F8F7A /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2EAD902AEC4C49000F8F7A /* SocketServer.swift */; };
+		FA2EAD932AEC4CCD000F8F7A /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2EAD922AEC4CCD000F8F7A /* SocketClient.swift */; };
+		FA2EAD972AED0C8B000F8F7A /* EditorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2EAD962AED0C8B000F8F7A /* EditorStore.swift */; };
+		FA2EAD9A2AED3906000F8F7A /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = FA2EAD992AED3906000F8F7A /* ArgumentParser */; };
+		FA2EADA62AED589F000F8F7A /* NeoHubLib.docc in Sources */ = {isa = PBXBuildFile; fileRef = FA2EADA52AED589F000F8F7A /* NeoHubLib.docc */; };
+		FA2EADA72AED589F000F8F7A /* NeoHubLib.h in Headers */ = {isa = PBXBuildFile; fileRef = FA2EADA42AED589F000F8F7A /* NeoHubLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2EADAA2AED589F000F8F7A /* NeoHubLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2EADA22AED589F000F8F7A /* NeoHubLib.framework */; };
+		FA2EADAB2AED589F000F8F7A /* NeoHubLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA2EADA22AED589F000F8F7A /* NeoHubLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FA2EADB02AED58C6000F8F7A /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2EADAF2AED58C6000F8F7A /* Shared.swift */; };
+		FA2EADB12AED65A6000F8F7A /* NeoHubLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2EADA22AED589F000F8F7A /* NeoHubLib.framework */; };
+		FA30F21E2AEEB6F9004EC6E9 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = FA30F21D2AEEB6F9004EC6E9 /* NIO */; };
+		FA30F2202AEEB70A004EC6E9 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = FA30F21F2AEEB70A004EC6E9 /* NIO */; };
+		FA30F2282AEED1E7004EC6E9 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30F2272AEED1E7004EC6E9 /* MenuBarView.swift */; };
+		FA30F22A2AEF7A7F004EC6E9 /* SwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30F2292AEF7A7F004EC6E9 /* SwitcherView.swift */; };
+		FA30F22F2AEF828A004EC6E9 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = FA30F22E2AEF828A004EC6E9 /* KeyboardShortcuts */; };
+		FA3937172AF291A5001D9105 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3937162AF291A5001D9105 /* SettingsView.swift */; };
+		FA39371D2AF3A7CC001D9105 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39371C2AF3A7CC001D9105 /* Shell.swift */; };
+		FA3937222AF41D84001D9105 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FA3937212AF41D84001D9105 /* LaunchAtLogin */; };
+		FA54EB702AF4FD84001AE449 /* neohub in Embed CLI */ = {isa = PBXBuildFile; fileRef = FA2AE45D2AEB9CA000D24008 /* neohub */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FA54EB722AF5033D001AE449 /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB712AF5033D001AE449 /* CLI.swift */; };
+		FA54EB742AF53ED9001AE449 /* RegularWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB732AF53ED9001AE449 /* RegularWindow.swift */; };
+		FA54EB762AF654D7001AE449 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB752AF654D7001AE449 /* AboutView.swift */; };
+		FA54EB792AF6AE06001AE449 /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB782AF6AE06001AE449 /* InstallationView.swift */; };
+		FA54EB7C2AF6E3E8001AE449 /* SettingsGroupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB7B2AF6E3E8001AE449 /* SettingsGroupModifier.swift */; };
+		FA54EB7F2AF789D4001AE449 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = FA54EB7E2AF789D4001AE449 /* Logging */; };
+		FA54EB812AF789F6001AE449 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB802AF789F6001AE449 /* Logger.swift */; };
+		FA54EB832AF7A381001AE449 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB822AF7A381001AE449 /* NotificationManager.swift */; };
+		FA54EB852AF7CB7E001AE449 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = FA54EB842AF7CB7E001AE449 /* Logging */; };
+		FA54EB872AF7CB97001AE449 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB862AF7CB97001AE449 /* Logger.swift */; };
+		FA54EB8D2AF7F689001AE449 /* BugReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB8C2AF7F689001AE449 /* BugReporter.swift */; };
+		FA54EB8F2AF8ACDB001AE449 /* ActivationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54EB8E2AF8ACDB001AE449 /* ActivationManager.swift */; };
+		FA54EB942AF90B52001AE449 /* LoggingSyslog in Frameworks */ = {isa = PBXBuildFile; productRef = FA54EB932AF90B52001AE449 /* LoggingSyslog */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA2EADA82AED589F000F8F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA2AE43F2AEB980700D24008 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA2EADA12AED589F000F8F7A;
+			remoteInfo = NeoHubLib;
+		};
+		FA2EADB32AED65A6000F8F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA2AE43F2AEB980700D24008 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA2EADA12AED589F000F8F7A;
+			remoteInfo = NeoHubLib;
+		};
+		FA54EB6E2AF4FD46001AE449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA2AE43F2AEB980700D24008 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA2AE45C2AEB9CA000D24008;
+			remoteInfo = NeoHubCLI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA2AE45B2AEB9CA000D24008 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		FA2AE4A42AEBDA1D00D24008 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA2EADAB2AED589F000F8F7A /* NeoHubLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAA5D7372AEEB074002DF3F8 /* Embed CLI */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				FA54EB702AF4FD84001AE449 /* neohub in Embed CLI */,
+			);
+			name = "Embed CLI";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FA2AE4472AEB980700D24008 /* NeoHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeoHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2AE44A2AEB980700D24008 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		FA2AE44E2AEB980800D24008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA2AE4512AEB980800D24008 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA2AE4532AEB980800D24008 /* NeoHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeoHub.entitlements; sourceTree = "<group>"; };
+		FA2AE45D2AEB9CA000D24008 /* neohub */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = neohub; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2AE45F2AEB9CA000D24008 /* CLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
+		FA2AE4A92AEBDDB800D24008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FA2AE4AA2AEBDF7800D24008 /* NeoHubCLI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeoHubCLI.entitlements; sourceTree = "<group>"; };
+		FA2EAD902AEC4C49000F8F7A /* SocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
+		FA2EAD922AEC4CCD000F8F7A /* SocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClient.swift; sourceTree = "<group>"; };
+		FA2EAD962AED0C8B000F8F7A /* EditorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorStore.swift; sourceTree = "<group>"; };
+		FA2EADA22AED589F000F8F7A /* NeoHubLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeoHubLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2EADA42AED589F000F8F7A /* NeoHubLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeoHubLib.h; sourceTree = "<group>"; };
+		FA2EADA52AED589F000F8F7A /* NeoHubLib.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NeoHubLib.docc; sourceTree = "<group>"; };
+		FA2EADAF2AED58C6000F8F7A /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		FA30F2272AEED1E7004EC6E9 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		FA30F2292AEF7A7F004EC6E9 /* SwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherView.swift; sourceTree = "<group>"; };
+		FA3937162AF291A5001D9105 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FA39371C2AF3A7CC001D9105 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		FA54EB712AF5033D001AE449 /* CLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
+		FA54EB732AF53ED9001AE449 /* RegularWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularWindow.swift; sourceTree = "<group>"; };
+		FA54EB752AF654D7001AE449 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		FA54EB782AF6AE06001AE449 /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
+		FA54EB7B2AF6E3E8001AE449 /* SettingsGroupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupModifier.swift; sourceTree = "<group>"; };
+		FA54EB802AF789F6001AE449 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FA54EB822AF7A381001AE449 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		FA54EB862AF7CB97001AE449 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FA54EB8C2AF7F689001AE449 /* BugReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugReporter.swift; sourceTree = "<group>"; };
+		FA54EB8E2AF8ACDB001AE449 /* ActivationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA2AE4442AEB980700D24008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA30F21E2AEEB6F9004EC6E9 /* NIO in Frameworks */,
+				FA54EB942AF90B52001AE449 /* LoggingSyslog in Frameworks */,
+				FA2EADAA2AED589F000F8F7A /* NeoHubLib.framework in Frameworks */,
+				FA3937222AF41D84001D9105 /* LaunchAtLogin in Frameworks */,
+				FA30F22F2AEF828A004EC6E9 /* KeyboardShortcuts in Frameworks */,
+				FA54EB7F2AF789D4001AE449 /* Logging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA2AE45A2AEB9CA000D24008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA30F2202AEEB70A004EC6E9 /* NIO in Frameworks */,
+				FA2EAD9A2AED3906000F8F7A /* ArgumentParser in Frameworks */,
+				FA54EB852AF7CB7E001AE449 /* Logging in Frameworks */,
+				FA2EADB12AED65A6000F8F7A /* NeoHubLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA2EAD9F2AED589F000F8F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA2AE43E2AEB980700D24008 = {
+			isa = PBXGroup;
+			children = (
+				FA2AE4492AEB980700D24008 /* NeoHub */,
+				FA2AE45E2AEB9CA000D24008 /* NeoHubCLI */,
+				FA2EADA32AED589F000F8F7A /* NeoHubLib */,
+				FA2AE4482AEB980700D24008 /* Products */,
+				FA2AE46B2AEBB9B600D24008 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA2AE4482AEB980700D24008 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA2AE4472AEB980700D24008 /* NeoHub.app */,
+				FA2AE45D2AEB9CA000D24008 /* neohub */,
+				FA2EADA22AED589F000F8F7A /* NeoHubLib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA2AE4492AEB980700D24008 /* NeoHub */ = {
+			isa = PBXGroup;
+			children = (
+				FA2AE4A92AEBDDB800D24008 /* Info.plist */,
+				FA54EB7A2AF6E3C5001AE449 /* components */,
+				FA30F2262AEED1C5004EC6E9 /* views */,
+				FA2AE44A2AEB980700D24008 /* App.swift */,
+				FA54EB712AF5033D001AE449 /* CLI.swift */,
+				FA54EB802AF789F6001AE449 /* Logger.swift */,
+				FA2EAD962AED0C8B000F8F7A /* EditorStore.swift */,
+				FA54EB732AF53ED9001AE449 /* RegularWindow.swift */,
+				FA54EB8E2AF8ACDB001AE449 /* ActivationManager.swift */,
+				FA54EB822AF7A381001AE449 /* NotificationManager.swift */,
+				FA54EB8C2AF7F689001AE449 /* BugReporter.swift */,
+				FA2EAD902AEC4C49000F8F7A /* SocketServer.swift */,
+				FA2AE44E2AEB980800D24008 /* Assets.xcassets */,
+				FA2AE4532AEB980800D24008 /* NeoHub.entitlements */,
+				FA2AE4502AEB980800D24008 /* Preview Content */,
+			);
+			path = NeoHub;
+			sourceTree = "<group>";
+		};
+		FA2AE4502AEB980800D24008 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA2AE4512AEB980800D24008 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA2AE45E2AEB9CA000D24008 /* NeoHubCLI */ = {
+			isa = PBXGroup;
+			children = (
+				FA2AE4AA2AEBDF7800D24008 /* NeoHubCLI.entitlements */,
+				FA2AE45F2AEB9CA000D24008 /* CLI.swift */,
+				FA39371C2AF3A7CC001D9105 /* Shell.swift */,
+				FA54EB862AF7CB97001AE449 /* Logger.swift */,
+				FA2EAD922AEC4CCD000F8F7A /* SocketClient.swift */,
+			);
+			path = NeoHubCLI;
+			sourceTree = "<group>";
+		};
+		FA2AE46B2AEBB9B600D24008 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA2EADA32AED589F000F8F7A /* NeoHubLib */ = {
+			isa = PBXGroup;
+			children = (
+				FA2EADA42AED589F000F8F7A /* NeoHubLib.h */,
+				FA2EADA52AED589F000F8F7A /* NeoHubLib.docc */,
+				FA2EADAF2AED58C6000F8F7A /* Shared.swift */,
+			);
+			path = NeoHubLib;
+			sourceTree = "<group>";
+		};
+		FA30F2262AEED1C5004EC6E9 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				FA30F2272AEED1E7004EC6E9 /* MenuBarView.swift */,
+				FA30F2292AEF7A7F004EC6E9 /* SwitcherView.swift */,
+				FA54EB782AF6AE06001AE449 /* InstallationView.swift */,
+				FA3937162AF291A5001D9105 /* SettingsView.swift */,
+				FA54EB752AF654D7001AE449 /* AboutView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		FA54EB7A2AF6E3C5001AE449 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				FA54EB7B2AF6E3E8001AE449 /* SettingsGroupModifier.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FA2EAD9D2AED589F000F8F7A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2EADA72AED589F000F8F7A /* NeoHubLib.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FA2AE4462AEB980700D24008 /* NeoHub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2AE4562AEB980800D24008 /* Build configuration list for PBXNativeTarget "NeoHub" */;
+			buildPhases = (
+				FA2AE4432AEB980700D24008 /* Sources */,
+				FA2AE4442AEB980700D24008 /* Frameworks */,
+				FA2AE4452AEB980700D24008 /* Resources */,
+				FA2AE4A42AEBDA1D00D24008 /* Embed Frameworks */,
+				FA54EB772AF678AA001AE449 /* Set Build Version */,
+				FAA5D7372AEEB074002DF3F8 /* Embed CLI */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA54EB6F2AF4FD46001AE449 /* PBXTargetDependency */,
+				FA2EADA92AED589F000F8F7A /* PBXTargetDependency */,
+			);
+			name = NeoHub;
+			packageProductDependencies = (
+				FA30F21D2AEEB6F9004EC6E9 /* NIO */,
+				FA30F22E2AEF828A004EC6E9 /* KeyboardShortcuts */,
+				FA3937212AF41D84001D9105 /* LaunchAtLogin */,
+				FA54EB7E2AF789D4001AE449 /* Logging */,
+				FA54EB932AF90B52001AE449 /* LoggingSyslog */,
+			);
+			productName = NeoHub;
+			productReference = FA2AE4472AEB980700D24008 /* NeoHub.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA2AE45C2AEB9CA000D24008 /* NeoHubCLI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2AE4612AEB9CA000D24008 /* Build configuration list for PBXNativeTarget "NeoHubCLI" */;
+			buildPhases = (
+				FA2AE4592AEB9CA000D24008 /* Sources */,
+				FA2AE45A2AEB9CA000D24008 /* Frameworks */,
+				FA2AE45B2AEB9CA000D24008 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA2EADB42AED65A6000F8F7A /* PBXTargetDependency */,
+			);
+			name = NeoHubCLI;
+			packageProductDependencies = (
+				FA2EAD992AED3906000F8F7A /* ArgumentParser */,
+				FA30F21F2AEEB70A004EC6E9 /* NIO */,
+				FA54EB842AF7CB7E001AE449 /* Logging */,
+			);
+			productName = NeoHubCLI;
+			productReference = FA2AE45D2AEB9CA000D24008 /* neohub */;
+			productType = "com.apple.product-type.tool";
+		};
+		FA2EADA12AED589F000F8F7A /* NeoHubLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2EADAC2AED589F000F8F7A /* Build configuration list for PBXNativeTarget "NeoHubLib" */;
+			buildPhases = (
+				FA2EAD9D2AED589F000F8F7A /* Headers */,
+				FA2EAD9E2AED589F000F8F7A /* Sources */,
+				FA2EAD9F2AED589F000F8F7A /* Frameworks */,
+				FA2EADA02AED589F000F8F7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NeoHubLib;
+			packageProductDependencies = (
+			);
+			productName = NeoHubLib;
+			productReference = FA2EADA22AED589F000F8F7A /* NeoHubLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA2AE43F2AEB980700D24008 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					FA2AE4462AEB980700D24008 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					FA2AE45C2AEB9CA000D24008 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					FA2EADA12AED589F000F8F7A = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = FA2AE4422AEB980700D24008 /* Build configuration list for PBXProject "NeoHub" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA2AE43E2AEB980700D24008;
+			packageReferences = (
+				FA2EAD982AED3906000F8F7A /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				FA30F21C2AEEB6F8004EC6E9 /* XCRemoteSwiftPackageReference "swift-nio" */,
+				FA30F22D2AEF828A004EC6E9 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				FA3937202AF41D84001D9105 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				FA54EB7D2AF789D4001AE449 /* XCRemoteSwiftPackageReference "swift-log" */,
+				FA54EB922AF90B52001AE449 /* XCRemoteSwiftPackageReference "swift-log-syslog" */,
+			);
+			productRefGroup = FA2AE4482AEB980700D24008 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA2AE4462AEB980700D24008 /* NeoHub */,
+				FA2AE45C2AEB9CA000D24008 /* NeoHubCLI */,
+				FA2EADA12AED589F000F8F7A /* NeoHubLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA2AE4452AEB980700D24008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2AE4522AEB980800D24008 /* Preview Assets.xcassets in Resources */,
+				FA2AE44F2AEB980800D24008 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA2EADA02AED589F000F8F7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA54EB772AF678AA001AE449 /* Set Build Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH,
+			);
+			name = "Set Build Version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INFO_PLIST=\"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\n# Query and save the value; suppress any error message, if key not found.\nvalue=$(/usr/libexec/PlistBuddy -c 'print :GitCommitHash' \"${INFO_PLIST}\" 2>/dev/null)\n\n# Check if value is empty\nif [ -z \"$value\" ] \nthen\n   /usr/libexec/PlistBuddy -c \"Add :GitCommitHash string\" \"${INFO_PLIST}\"\nfi\n\n/usr/libexec/PlistBuddy -c \"Set :GitCommitHash `git rev-parse --short HEAD`\" \"${INFO_PLIST}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA2AE4432AEB980700D24008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3937172AF291A5001D9105 /* SettingsView.swift in Sources */,
+				FA54EB742AF53ED9001AE449 /* RegularWindow.swift in Sources */,
+				FA54EB762AF654D7001AE449 /* AboutView.swift in Sources */,
+				FA2EAD912AEC4C49000F8F7A /* SocketServer.swift in Sources */,
+				FA54EB8D2AF7F689001AE449 /* BugReporter.swift in Sources */,
+				FA54EB7C2AF6E3E8001AE449 /* SettingsGroupModifier.swift in Sources */,
+				FA2AE44B2AEB980700D24008 /* App.swift in Sources */,
+				FA54EB722AF5033D001AE449 /* CLI.swift in Sources */,
+				FA54EB812AF789F6001AE449 /* Logger.swift in Sources */,
+				FA30F22A2AEF7A7F004EC6E9 /* SwitcherView.swift in Sources */,
+				FA54EB832AF7A381001AE449 /* NotificationManager.swift in Sources */,
+				FA54EB8F2AF8ACDB001AE449 /* ActivationManager.swift in Sources */,
+				FA2EAD972AED0C8B000F8F7A /* EditorStore.swift in Sources */,
+				FA54EB792AF6AE06001AE449 /* InstallationView.swift in Sources */,
+				FA30F2282AEED1E7004EC6E9 /* MenuBarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA2AE4592AEB9CA000D24008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA39371D2AF3A7CC001D9105 /* Shell.swift in Sources */,
+				FA2AE4602AEB9CA000D24008 /* CLI.swift in Sources */,
+				FA2EAD932AEC4CCD000F8F7A /* SocketClient.swift in Sources */,
+				FA54EB872AF7CB97001AE449 /* Logger.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA2EAD9E2AED589F000F8F7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2EADA62AED589F000F8F7A /* NeoHubLib.docc in Sources */,
+				FA2EADB02AED58C6000F8F7A /* Shared.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA2EADA92AED589F000F8F7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA2EADA12AED589F000F8F7A /* NeoHubLib */;
+			targetProxy = FA2EADA82AED589F000F8F7A /* PBXContainerItemProxy */;
+		};
+		FA2EADB42AED65A6000F8F7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA2EADA12AED589F000F8F7A /* NeoHubLib */;
+			targetProxy = FA2EADB32AED65A6000F8F7A /* PBXContainerItemProxy */;
+		};
+		FA54EB6F2AF4FD46001AE449 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA2AE45C2AEB9CA000D24008 /* NeoHubCLI */;
+			targetProxy = FA54EB6E2AF4FD46001AE449 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FA2AE4542AEB980800D24008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_CODE_COVERAGE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA2AE4552AEB980800D24008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_CODE_COVERAGE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		FA2AE4572AEB980800D24008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NeoHub/NeoHub.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NeoHub/Preview Content\"";
+				DEVELOPMENT_TEAM = Q62V4YP545;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NeoHub/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NeoHub;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© Alex Fedoseev. Icon by u/danbee.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex35mil.NeoHub;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FA2AE4582AEB980800D24008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NeoHub/NeoHub.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NeoHub/Preview Content\"";
+				DEVELOPMENT_TEAM = Q62V4YP545;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NeoHub/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NeoHub;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© Alex Fedoseev. Icon by u/danbee.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex35mil.NeoHub;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FA2AE4622AEB9CA000D24008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NeoHubCLI/NeoHubCLI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q62V4YP545;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/../Frameworks",
+					/usr/local/lib,
+					"@loader_path/",
+				);
+				MARKETING_VERSION = "";
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex35mil.NeoHub.CLI;
+				PRODUCT_NAME = neohub;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FA2AE4632AEB9CA000D24008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NeoHubCLI/NeoHubCLI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q62V4YP545;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/../Frameworks",
+					/usr/local/lib,
+				);
+				MARKETING_VERSION = "";
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex35mil.NeoHub.CLI;
+				PRODUCT_NAME = neohub;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FA2EADAD2AED589F000F8F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Q62V4YP545;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex35mil.NeoHub.Lib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FA2EADAE2AED589F000F8F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Q62V4YP545;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex35mil.NeoHub.Lib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA2AE4422AEB980700D24008 /* Build configuration list for PBXProject "NeoHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2AE4542AEB980800D24008 /* Debug */,
+				FA2AE4552AEB980800D24008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA2AE4562AEB980800D24008 /* Build configuration list for PBXNativeTarget "NeoHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2AE4572AEB980800D24008 /* Debug */,
+				FA2AE4582AEB980800D24008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA2AE4612AEB9CA000D24008 /* Build configuration list for PBXNativeTarget "NeoHubCLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2AE4622AEB9CA000D24008 /* Debug */,
+				FA2AE4632AEB9CA000D24008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA2EADAC2AED589F000F8F7A /* Build configuration list for PBXNativeTarget "NeoHubLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2EADAD2AED589F000F8F7A /* Debug */,
+				FA2EADAE2AED589F000F8F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA2EAD982AED3906000F8F7A /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
+		FA30F21C2AEEB6F8004EC6E9 /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.61.0;
+			};
+		};
+		FA30F22D2AEF828A004EC6E9 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.0;
+			};
+		};
+		FA3937202AF41D84001D9105 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		FA54EB7D2AF789D4001AE449 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.3;
+			};
+		};
+		FA54EB922AF90B52001AE449 /* XCRemoteSwiftPackageReference "swift-log-syslog" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ianpartridge/swift-log-syslog.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA2EAD992AED3906000F8F7A /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2EAD982AED3906000F8F7A /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		FA30F21D2AEEB6F9004EC6E9 /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA30F21C2AEEB6F8004EC6E9 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		FA30F21F2AEEB70A004EC6E9 /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA30F21C2AEEB6F8004EC6E9 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		FA30F22E2AEF828A004EC6E9 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA30F22D2AEF828A004EC6E9 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		FA3937212AF41D84001D9105 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA3937202AF41D84001D9105 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+		FA54EB7E2AF789D4001AE449 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA54EB7D2AF789D4001AE449 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		FA54EB842AF7CB7E001AE449 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA54EB7D2AF789D4001AE449 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		FA54EB932AF90B52001AE449 /* LoggingSyslog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA54EB922AF90B52001AE449 /* XCRemoteSwiftPackageReference "swift-log-syslog" */;
+			productName = LoggingSyslog;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FA2AE43F2AEB980700D24008 /* Project object */;
+}
