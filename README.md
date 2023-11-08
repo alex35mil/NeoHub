@@ -22,16 +22,23 @@ So, what NeoHub offers?
 ## Download
 Get it from the [Releases](https://github.com/alex35mil/NeoHub/releases).
 
+## Installation
+This a macOS app. Unzip the `NeoHub.zip` and move `NeoHub.app` to the `Applications` folder.
+
+On the very first launch, you will be asked to install the CLI. You will need to enter an administrative password. 
+
 ## Usage
-On the very first launch, you will be asked to install the CLI. This is the only way to launch a Neovide through the NeoHub.
+### CLI
+Once installed, the `neohub` command should become available in your shell. This is the only way to launch a Neovide through the NeoHub, so use `neohub` instead of `neovide` to launch editors. Otherwise, things won't work.
 
-Once installed, the `neohub` command should become available in your shell. Use it instead of `neovide` to launch editors. Otherwise, things won't work.
+See `neovide --help` for available options.
 
-Hit `⌘ ⌃ N` (`Command + Control + N`) to open the switcher (hotkey is configurable).
+### App
+Hit `⌘ ⌃ N` (`Command + Control + N`) to open the switcher. The hotkey is configurable.
 
-P.S. If only one Neovide instance is running, NeoHub will activate it instead of showing the switcher.
+When in the switcher, you can quit all editors at once by pressing `⌘ Q`, or just a selected one with `⌘ ⌫`.
 
-Also, you can quit all editors at once by pressing `⌘ Q` in the switcher, or just a selected one with `⌘ ⌫`.
+P.S. When you press the hotkey and there is only one Neovide instance is running, NeoHub will activate it instead of showing the switcher.
 
 ## Credits
 App icon is by [u/danbee](https://www.reddit.com/user/danbee/).
