@@ -27,7 +27,7 @@ struct MenuBarView: View {
     let aboutWindow: RegularWindow<AboutView>
 
     var body: some View {
-        let editors = editorStore.getEditors()
+        let editors = editorStore.getEditors(sortedFor: .menubar)
 
         Group {
             if editors.count == 0 {

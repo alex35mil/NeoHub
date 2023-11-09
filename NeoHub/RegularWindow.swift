@@ -78,6 +78,10 @@ final class RegularWindow<Content: View> {
         self.windowCounter.inc()
     }
 
+    func isSameWindow(_ window: NSWindow) -> Bool {
+        self.window == window
+    }
+
     func close() {
         if let window = self.window {
             window.close()
@@ -103,7 +107,19 @@ final class RegularWindow<Content: View> {
 }
 
 final class RegularWindowRef<Content: View> {
-    var window: RegularWindow<Content>?
+    private var window: RegularWindow<Content>?
+
+    func set(_ window: RegularWindow<Content>) {
+        self.window = window
+    }
+
+    func isSameWindow(_ window: NSWindow) -> Bool {
+        if let win = self.window {
+            return win.isSameWindow(window)
+        } else {
+            return false
+        }
+    }
 
     func close() {
         if let window = self.window {

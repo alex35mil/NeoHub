@@ -47,15 +47,22 @@ struct Layout {
 final class SwitcherWindow: ObservableObject {
     private let editorStore: EditorStore
     private let settingsWindow: RegularWindow<SettingsView>
+    private let selfRef: SwitcherWindowRef
     private let activationManager: ActivationManager
 
     private var window: NSWindow!
 
     @Published private var hidden: Bool = true
 
-    init(editorStore: EditorStore, settingsWindow: RegularWindow<SettingsView>, activationManager: ActivationManager) {
+    init(
+        editorStore: EditorStore,
+        settingsWindow: RegularWindow<SettingsView>,
+        selfRef: SwitcherWindowRef,
+        activationManager: ActivationManager
+    ) {
         self.editorStore = editorStore
         self.settingsWindow = settingsWindow
+        self.selfRef = selfRef
         self.activationManager = activationManager
 
         let contentView = SwitcherView(
@@ -113,9 +120,18 @@ final class SwitcherWindow: ObservableObject {
             switch NSWorkspace.shared.frontmostApplication {
                 case .some(let app):
                     if app.processIdentifier == editor.processIdentifier {
-                        activationManager.activatePriorApp()
+                        activationManager.activateTarget()
+                        activationManager.setActivationTarget(
+                            currentApp: app,
+                            switcherWindow: self.selfRef,
+                            editors: editors
+                        )
                     } else {
-                        activationManager.setPriorApp(app)
+                        activationManager.setActivationTarget(
+                            currentApp: app,
+                            switcherWindow: self.selfRef,
+                            editors: editors
+                        )
                         editor.activate()
                     }
                 case .none:
@@ -135,11 +151,11 @@ final class SwitcherWindow: ObservableObject {
     }
 
     private func show() {
-        if let currentApp = NSWorkspace.shared.frontmostApplication {
-            if currentApp.bundleIdentifier != APP_BUNDLE_ID {
-                activationManager.setPriorApp(currentApp)
-            }
-        }
+        activationManager.setActivationTarget(
+            currentApp: NSWorkspace.shared.frontmostApplication,
+            switcherWindow: self.selfRef,
+            editors: self.editorStore.getEditors()
+        )
 
         self.hidden = false
 
@@ -158,12 +174,16 @@ final class SwitcherWindow: ObservableObject {
 
         let currentApp = NSWorkspace.shared.frontmostApplication
         if currentApp?.bundleIdentifier == APP_BUNDLE_ID {
-            activationManager.activatePriorApp()
+            activationManager.activateTarget()
         }
     }
 
     public func isHidden() -> Bool {
         return self.hidden
+    }
+
+    public func isSameWindow(_ window: NSWindow) -> Bool {
+        self.window == window
     }
 }
 
@@ -405,7 +425,7 @@ struct SwitcherListView: View {
     }
 
     func filterEditors() -> [Editor] {
-        return editorStore.getEditors().filter { editor in
+        editorStore.getEditors(sortedFor: .switcher).filter { editor in
             searchText.isEmpty
             || editor.name.contains(searchText)
             || editor.displayPath.localizedCaseInsensitiveContains(searchText)
@@ -423,7 +443,7 @@ struct SwitcherListView: View {
             }
 
             if totalEditors == 1 {
-                activationManager.activatePriorApp()
+                activationManager.activateTarget()
             }
 
             editor.quit()
@@ -432,7 +452,7 @@ struct SwitcherListView: View {
 
     func quitAllEditors() {
         Task {
-            activationManager.activatePriorApp()
+            activationManager.activateTarget()
             await editorStore.quitAllEditors()
         }
     }
@@ -477,6 +497,26 @@ struct SwitcherListView: View {
                     background = hovering ? Color.white.opacity(0.1) : Self.background
                 }
             })
+        }
+    }
+}
+
+final class SwitcherWindowRef {
+    private var window: SwitcherWindow?
+
+    init(window: SwitcherWindow? = nil) {
+        self.window = window
+    }
+
+    func set(_ window: SwitcherWindow) {
+        self.window = window
+    }
+
+    func isSameWindow(_ window: NSWindow) -> Bool {
+        if let win = self.window {
+            return win.isSameWindow(window)
+        } else {
+            return false
         }
     }
 }

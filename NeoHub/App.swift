@@ -48,7 +48,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let cli = CLI()
         let windowCounter = WindowCounter()
         let activationManager = ActivationManager()
-        let editorStore = EditorStore(activationManager: activationManager)
+
+        let switcherWindowRef = SwitcherWindowRef()
+        let installationWindowRef = RegularWindowRef<InstallationView>()
+
+        let editorStore = EditorStore(
+            activationManager: activationManager,
+            switcherWindow: switcherWindowRef
+        )
 
         self.cli = cli
         self.server = SocketServer(store: editorStore)
@@ -66,12 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.switcherWindow = SwitcherWindow(
             editorStore: editorStore,
             settingsWindow: settingsWindow,
+            selfRef: switcherWindowRef,
             activationManager: activationManager
         )
         self.windowCounter = windowCounter
         self.activationManager = activationManager
-
-        let installationWindowRef = RegularWindowRef<InstallationView>()
 
         self.installationWindow = RegularWindow(
             title: APP_NAME,
@@ -85,7 +91,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             windowCounter: windowCounter
         )
 
-        installationWindowRef.window = self.installationWindow
+        switcherWindowRef.set(self.switcherWindow)
+        installationWindowRef.set(self.installationWindow)
 
         super.init()
     }
