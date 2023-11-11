@@ -135,6 +135,7 @@
 		FA54EB862AF7CB97001AE449 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FA54EB8C2AF7F689001AE449 /* BugReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugReporter.swift; sourceTree = "<group>"; };
 		FA54EB8E2AF8ACDB001AE449 /* ActivationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationManager.swift; sourceTree = "<group>"; };
+		FA728EF32AFF716E0013610E /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				FA03D4C82AFA302A00790D2F /* README.md */,
+				FA728EF32AFF716E0013610E /* CHANGELOG.md */,
 				FA2AE4492AEB980700D24008 /* NeoHub */,
 				FA2AE45E2AEB9CA000D24008 /* NeoHubCLI */,
 				FA2EADA32AED589F000F8F7A /* NeoHubLib */,
