@@ -9,10 +9,16 @@ final class EditorStore: ObservableObject {
     let switcherWindow: SwitcherWindowRef
     let activationManager: ActivationManager
 
+    private var restartPoller: Timer?
+
     init(activationManager: ActivationManager, switcherWindow: SwitcherWindowRef) {
         self.editors = [:]
         self.switcherWindow = switcherWindow
         self.activationManager = activationManager
+
+        KeyboardShortcuts.onKeyUp(for: .restartEditor) { [self] in
+            self.restartActiveEditor()
+        }
     }
 
     public enum SortTarget {
@@ -48,24 +54,24 @@ final class EditorStore: ObservableObject {
         }
     }
 
-    func runEditor(req: RunRequest) {
+    func runEditor(request: RunRequest) {
         log.info("Running an editor...")
 
-        let editorID = switch req.path {
+        let editorID = switch request.path {
         case nil, "":
-            EditorID(req.wd)
+            EditorID(request.wd)
         case .some(let path):
             EditorID(
                 URL(
                     fileURLWithPath: path,
-                    relativeTo: req.wd
+                    relativeTo: request.wd
                 )
             )
         }
 
         log.info("Editor ID: \(editorID)")
 
-        let editorName = switch req.name {
+        let editorName = switch request.name {
         case nil, "":
             editorID.lastPathComponent
         case .some(let name):
@@ -82,31 +88,31 @@ final class EditorStore: ObservableObject {
                 log.info("No editors at \(editorID) found. Launching a new one.")
 
                 do {
-                    log.info("Running editor at \(req.wd.path)")
+                    log.info("Running editor at \(request.wd.path)")
 
                     let process = Process()
 
-                    process.executableURL = req.bin
+                    process.executableURL = request.bin
 
                     let nofork = "--no-fork"
 
-                    process.arguments = req.opts
+                    process.arguments = request.opts
 
                     if !process.arguments!.contains(nofork) {
                         process.arguments!.append(nofork)
                     }
 
-                    if let path = req.path {
+                    if let path = request.path {
                         process.arguments!.append(path)
                     }
 
-                    process.currentDirectoryURL = req.wd
-                    process.environment = req.env
+                    process.currentDirectoryURL = request.wd
+                    process.environment = request.env
 
                     process.terminationHandler = { process in
                         DispatchQueue.main.async {
                             log.info("Removing editor from the hub")
-                            self.editors[editorID] = nil
+                            self.editors.removeValue(forKey: editorID)
                         }
                     }
 
@@ -127,7 +133,8 @@ final class EditorStore: ObservableObject {
                             self.editors[editorID] = Editor(
                                 id: editorID,
                                 name: editorName,
-                                process: process
+                                process: process,
+                                request: request
                             )
                         }
                     } else {
@@ -138,10 +145,10 @@ final class EditorStore: ObservableObject {
                                 "EditorID": editorID,
                                 "EditorPID": process.processIdentifier,
                                 "EditorTerminationStatus": process.terminationStatus,
-                                "EditorWorkingDirectory": req.wd,
-                                "EditorBinary": req.bin,
-                                "EditorPathArgument": req.path ?? "-",
-                                "EditorOptions": req.opts,
+                                "EditorWorkingDirectory": request.wd,
+                                "EditorBinary": request.bin,
+                                "EditorPathArgument": request.path ?? "-",
+                                "EditorOptions": request.opts,
                             ]
                         )
                     }
@@ -153,12 +160,80 @@ final class EditorStore: ObservableObject {
         }
     }
 
+    func restartActiveEditor() {
+        log.info("Restarting the active editor...")
+
+        guard let activeApp = NSWorkspace.shared.frontmostApplication else {
+            log.info("There is no active app. Canceling restart.")
+            return
+        }
+
+        guard let editor = self.editors.first(where: { id, editor in editor.processIdentifier == activeApp.processIdentifier })?.value else {
+            log.info("The active app is not an editor. Canceling restart.")
+            return
+        }
+
+        log.info("Quiting the editor")
+
+        editor.quit()
+
+        // Termination handler should remove the editor from the store,
+        // so we should wait for that, then re-run the editor
+        log.info("Starting polling until the old editor is removed from the store")
+
+        let timeout = TimeInterval(5)
+        let startTime = Date()
+
+        self.restartPoller = Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { [weak self] _ in
+            log.trace("Starting the iteration...")
+
+            guard let self = self else { return }
+
+            log.trace("We have self. Checking the store.")
+            if self.editors[editor.id] == nil {
+                log.info("The old editor removed from the store. Starting the new instance.")
+                self.invalidateRestartPoller()
+                self.runEditor(request: editor.request)
+            } else if -startTime.timeIntervalSinceNow > timeout {
+                log.error("The editor wasn't removed from the store within the timeout. Canceling the restart.")
+                self.invalidateRestartPoller()
+
+                let alert = NSAlert()
+
+                alert.messageText = "Failed to restart the editor"
+                alert.informativeText = "Please, report the issue on GitHub."
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: "Report")
+                alert.addButton(withTitle: "Dismiss")
+
+                switch alert.runModal() {
+                    case .alertFirstButtonReturn:
+                        let error = ReportableError("Failed to restart the editor")
+                        BugReporter.report(error)
+                    default: ()
+                }
+
+                return
+            }
+        }
+    }
+
+
     func quitAllEditors() async {
         await withTaskGroup(of: Void.self) { group in
             for (_, editor) in self.editors {
                 group.addTask { editor.quit() }
             }
         }
+    }
+
+    private func invalidateRestartPoller() {
+        log.debug("Stopping the restart poller")
+        self.restartPoller?.invalidate()
+    }
+
+    deinit {
+        self.invalidateRestartPoller()
     }
 }
 
@@ -204,12 +279,14 @@ final class Editor: Identifiable {
 
     private let process: Process
     private(set) var lastAcceessTime: Date
+    private(set) var request: RunRequest
 
-    init(id: EditorID, name: String, process: Process) {
+    init(id: EditorID, name: String, process: Process, request: RunRequest) {
         self.id = id
         self.name = name
         self.process = process
         self.lastAcceessTime = Date()
+        self.request = request
     }
 
     var displayPath: String {

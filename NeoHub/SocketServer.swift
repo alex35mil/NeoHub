@@ -137,7 +137,7 @@ class MessageHandler: ChannelInboundHandler {
                 )
 
                 DispatchQueue.global().async {
-                    self.store.runEditor(req: req)
+                    self.store.runEditor(request: req)
                 }
             } catch {
                 let error = ReportableError("Failed to decode request from the CLI", error: error)
