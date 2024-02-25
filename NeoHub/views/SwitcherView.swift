@@ -3,6 +3,7 @@ import KeyboardShortcuts
 
 struct Key {
     static let ESC: UInt16 = 53
+    static let TAB: UInt16 = 48
     static let ENTER: UInt16 = 36
     static let ARROW_UP: UInt16 = 126
     static let ARROW_DOWN: UInt16 = 125
@@ -105,12 +106,45 @@ final class SwitcherWindow: ObservableObject {
         window.standardWindowButton(.zoomButton)?.isHidden = true
 
         window.center()
+        
+        KeyboardShortcuts.onKeyUp(for: .toggleFixedWindow) { [self] in
+            self.handleFixedWindowToggle()
+        }
 
         KeyboardShortcuts.onKeyUp(for: .toggleSwitcher) { [self] in
             self.handleSwitcherToggle()
         }
     }
+    
+    private func handleFixedWindowToggle() {
+        let editors = editorStore.getEditors(sortedFor: .fixed)
+        
+        if editors.count >= 1 {
+            let editor = editors.first!
 
+            switch NSWorkspace.shared.frontmostApplication {
+                case .some(let app):
+                    if app.processIdentifier == editor.processIdentifier {
+                        activationManager.activateTarget()
+                        activationManager.setActivationTarget(
+                            currentApp: app,
+                            switcherWindow: self.selfRef,
+                            editors: editors
+                        )
+                    } else {
+                        activationManager.setActivationTarget(
+                            currentApp: app,
+                            switcherWindow: self.selfRef,
+                            editors: editors
+                        )
+                        editor.activate()
+                    }
+                case .none:
+                    editor.activate()
+            }
+        }
+    }
+    
     private func handleSwitcherToggle() {
         let editors = editorStore.getEditors()
 
@@ -386,6 +420,13 @@ struct SwitcherListView: View {
                             selectedIndex += 1
                         }
                         return nil
+                    case Key.TAB:
+                        if selectedIndex < self.filterEditors().count - 1 {
+                            selectedIndex += 1
+                        } else {
+                            selectedIndex = 0
+                        }
+                        return nil
                     case Key.ENTER:
                         let editors = self.filterEditors()
                         if editors.indices.contains(selectedIndex) {
@@ -430,6 +471,10 @@ struct SwitcherListView: View {
             || editor.name.contains(searchText)
             || editor.displayPath.localizedCaseInsensitiveContains(searchText)
         }
+    }
+    
+    func navigateProjects() {
+        let editors = self.filterEditors()
     }
 
     func quitSelectedEditor() {

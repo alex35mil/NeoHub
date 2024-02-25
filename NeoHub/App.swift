@@ -8,6 +8,11 @@ let APP_BUILD = Bundle.main.object(forInfoDictionaryKey: "GitCommitHash") as! St
 let APP_BUNDLE_ID = Bundle.main.bundleIdentifier!
 
 extension KeyboardShortcuts.Name {
+    static let toggleFixedWindow = Self(
+        "toggleFixedWindow",
+        default: .init(.n, modifiers: [.command, .control])
+    )
+
     static let toggleSwitcher = Self(
         "toggleSwitcher",
         default: .init(.n, modifiers: [.command, .control])

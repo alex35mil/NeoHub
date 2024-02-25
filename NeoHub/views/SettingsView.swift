@@ -33,6 +33,14 @@ struct SettingsView: View {
                 HStack {
                     Text("Toggle Editor Selector")
                     Spacer()
+                    KeyboardShortcuts.Recorder("", name: .toggleFixedWindow)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+
+                HStack {
+                    Text("NeoHub Switcher Hotkey")
+                    Spacer()
                     KeyboardShortcuts.Recorder("", name: .toggleSwitcher)
                 }
                 .padding(.horizontal)
