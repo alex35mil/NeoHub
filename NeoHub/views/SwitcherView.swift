@@ -107,8 +107,8 @@ final class SwitcherWindow: ObservableObject {
 
         window.center()
         
-        KeyboardShortcuts.onKeyUp(for: .toggleFixedWindow) { [self] in
-            self.handleFixedWindowToggle()
+        KeyboardShortcuts.onKeyUp(for: .togglePinnedWindow) { [self] in
+            self.handlePinnedWindowToggle()
         }
 
         KeyboardShortcuts.onKeyUp(for: .toggleSwitcher) { [self] in
@@ -116,8 +116,8 @@ final class SwitcherWindow: ObservableObject {
         }
     }
     
-    private func handleFixedWindowToggle() {
-        let editors = editorStore.getEditors(sortedFor: .fixed)
+    private func handlePinnedWindowToggle() {
+        let editors = editorStore.getEditors(sortedFor: .pinned)
         
         if editors.count >= 1 {
             let editor = editors.first!

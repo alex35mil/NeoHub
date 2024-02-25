@@ -33,7 +33,7 @@ struct SettingsView: View {
                 HStack {
                     Text("Toggle Editor Selector")
                     Spacer()
-                    KeyboardShortcuts.Recorder("", name: .toggleFixedWindow)
+                    KeyboardShortcuts.Recorder("", name: .togglePinnedWindow)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
