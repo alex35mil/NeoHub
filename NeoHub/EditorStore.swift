@@ -38,7 +38,7 @@ final class EditorStore: ObservableObject {
             case .menubar:
                 return editors.sorted { $0.name > $1.name }
             case .pinned:
-                // Always return the last used editor, so we consider it as `fixed`
+                // Always return the last used editor, so we consider it as `pinned`
                 return editors.sorted { $0.lastAcceessTime > $1.lastAcceessTime }
             case .switcher:
                 var sorted = editors.sorted { $0.lastAcceessTime > $1.lastAcceessTime }
