@@ -421,11 +421,7 @@ struct SwitcherListView: View {
                         }
                         return nil
                     case Key.TAB:
-                        if selectedIndex < self.filterEditors().count - 1 {
-                            selectedIndex += 1
-                        } else {
-                            selectedIndex = 0
-                        }
+                        selectedIndex = (selectedIndex + 1) % self.filterEditors().count
                         return nil
                     case Key.ENTER:
                         let editors = self.filterEditors()
