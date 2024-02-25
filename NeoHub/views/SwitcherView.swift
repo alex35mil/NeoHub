@@ -469,10 +469,6 @@ struct SwitcherListView: View {
         }
     }
     
-    func navigateProjects() {
-        let editors = self.filterEditors()
-    }
-
     func quitSelectedEditor() {
         let editors = self.filterEditors()
         if editors.indices.contains(selectedIndex) {
