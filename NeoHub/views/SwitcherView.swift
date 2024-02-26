@@ -119,13 +119,13 @@ final class SwitcherWindow: ObservableObject {
     private func handlePinnedWindowToggle() {
         let editors = editorStore.getEditors(sortedFor: .pinned)
         
-        if editors.count >= 1 {
+        if !editors.isEmpty {
             let editor = editors.first!
+            let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
 
             switch NSWorkspace.shared.frontmostApplication {
                 case .some(let app):
                     if app.processIdentifier == editor.processIdentifier {
-                       let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
                         application?.hide()
                     } else {
                         activationManager.setActivationTarget(
@@ -133,7 +133,6 @@ final class SwitcherWindow: ObservableObject {
                             switcherWindow: self.selfRef,
                             editors: editors
                         )
-                        let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
                         application?.activate()
                     }
                 case .none:

@@ -39,7 +39,11 @@ final class EditorStore: ObservableObject {
                 return editors.sorted { $0.name > $1.name }
             case .pinned:
                 // Always return the last used editor, so we consider it as `pinned`
-                return editors.sorted { $0.lastAcceessTime > $1.lastAcceessTime }
+                if let lastUsedEditor = editors.max(by: { $0.lastAcceessTime < $1.lastAcceessTime }) {
+                    return [lastUsedEditor]
+                } else {
+                    return []
+                }
             case .switcher:
                 var sorted = editors.sorted { $0.lastAcceessTime > $1.lastAcceessTime }
 
@@ -329,19 +333,14 @@ final class Editor: Identifiable {
             return
         }
 
-        DispatchQueue.main.async {
-            // We have to activate NeoHub first so macOS would allow to activate Neovide
-            NSApp.activate(ignoringOtherApps: true)
+        let activated = app.activate()
 
-            let activated = app.activate()
-
-            if !activated {
-                let error = ReportableError("Failed to activate Neovide instance")
-                log.error("\(error)")
-                FailedToActivateEditorAppNotification(error: error).send()
-            } else {
-                self.lastAcceessTime = Date()
-            }
+        if !activated {
+            let error = ReportableError("Failed to activate Neovide instance")
+            log.error("\(error)")
+            FailedToActivateEditorAppNotification(error: error).send()
+        } else {
+            self.lastAcceessTime = Date()
         }
     }
 
