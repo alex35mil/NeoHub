@@ -107,7 +107,7 @@ final class SwitcherWindow: ObservableObject {
 
         window.center()
         
-        KeyboardShortcuts.onKeyUp(for: .togglePinnedWindow) { [self] in
+        KeyboardShortcuts.onKeyDown(for: .togglePinnedWindow) { [self] in
             self.handlePinnedWindowToggle()
         }
 
