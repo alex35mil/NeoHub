@@ -137,7 +137,8 @@ final class SwitcherWindow: ObservableObject {
                     }
                 case .none:
                     let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
-                    application?.hide()            }
+                    application?.hide()           
+            }
         }
     }
     
