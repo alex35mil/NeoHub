@@ -125,23 +125,20 @@ final class SwitcherWindow: ObservableObject {
             switch NSWorkspace.shared.frontmostApplication {
                 case .some(let app):
                     if app.processIdentifier == editor.processIdentifier {
-                        activationManager.activateTarget()
-                        activationManager.setActivationTarget(
-                            currentApp: app,
-                            switcherWindow: self.selfRef,
-                            editors: editors
-                        )
+                       let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
+                        application?.hide()
                     } else {
                         activationManager.setActivationTarget(
                             currentApp: app,
                             switcherWindow: self.selfRef,
                             editors: editors
                         )
-                        editor.activate()
+                        let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
+                        application?.activate()
                     }
                 case .none:
-                    editor.activate()
-            }
+                    let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
+                    application?.hide()            }
         }
     }
     
