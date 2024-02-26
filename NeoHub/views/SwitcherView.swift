@@ -111,7 +111,7 @@ final class SwitcherWindow: ObservableObject {
             self.handlePinnedWindowToggle()
         }
 
-        KeyboardShortcuts.onKeyUp(for: .toggleSwitcher) { [self] in
+        KeyboardShortcuts.onKeyDown(for: .toggleSwitcher) { [self] in
             self.handleSwitcherToggle()
         }
     }
