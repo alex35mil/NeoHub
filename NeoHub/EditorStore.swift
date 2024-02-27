@@ -333,14 +333,18 @@ final class Editor: Identifiable {
             return
         }
 
-        let activated = app.activate()
+        DispatchQueue.main.async {
+            // We have to activate NeoHub first so macOS would allow to activate Neovide
+            NSApp.activate(ignoringOtherApps: true)
 
-        if !activated {
-            let error = ReportableError("Failed to activate Neovide instance")
-            log.error("\(error)")
-            FailedToActivateEditorAppNotification(error: error).send()
-        } else {
-            self.lastAcceessTime = Date()
+            let activated = app.activate()
+            if !activated {
+                let error = ReportableError("Failed to activate Neovide instance")
+                log.error("\(error)")
+                FailedToActivateEditorAppNotification(error: error).send()
+            } else {
+                self.lastAcceessTime = Date()
+            }
         }
     }
 
