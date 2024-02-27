@@ -17,7 +17,6 @@ extension KeyboardShortcuts.Name {
         "toggleSwitcher",
         default: .init(.n, modifiers: [.command, .control])
     )
-    
 }
 
 @main
