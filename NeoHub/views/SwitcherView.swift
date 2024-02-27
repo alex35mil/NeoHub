@@ -465,7 +465,7 @@ struct SwitcherListView: View {
             || editor.displayPath.localizedCaseInsensitiveContains(searchText)
         }
     }
-    
+
     func quitSelectedEditor() {
         let editors = self.filterEditors()
         if editors.indices.contains(selectedIndex) {
