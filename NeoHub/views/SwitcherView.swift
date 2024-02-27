@@ -122,7 +122,6 @@ final class SwitcherWindow: ObservableObject {
         if !editors.isEmpty {
             let editor = editors.first!
             let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
-
             switch NSWorkspace.shared.frontmostApplication {
                 case .some(let app):
                     if app.processIdentifier == editor.processIdentifier {
