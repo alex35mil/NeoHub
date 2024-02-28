@@ -8,6 +8,7 @@ private struct Bin {
 
 private struct Lib {
     static let source = Bundle.main.bundlePath + "/Contents/Frameworks/NeoHubLib.framework"
+    static let parent = "/usr/local/lib"
     static let destination = "/usr/local/lib/NeoHubLib.framework"
 }
 
@@ -57,6 +58,7 @@ final class CLI: ObservableObject {
 
     static func getStatus() -> CLIStatus {
         let fs = FileManager.default
+
         let installed = fs.fileExists(atPath: Bin.destination) && fs.fileExists(atPath: Lib.destination)
 
         if !installed {
@@ -78,7 +80,17 @@ final class CLI: ObservableObject {
         }
     }
 
+    func createDirectoryIfNotExists(at path: String) {
+        let fs = FileManager.default
+        let exists = fs.fileExists(atPath: path)
+        if !exists {
+            try? fs.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+        }
+    }
+
     func perform(_ operation: CLIOperation, andThen callback: @escaping (Result<Void, CLIInstallationError>, CLIStatus) -> Void) {
+        createDirectoryIfNotExists(at: Lib.parent)
+
         DispatchQueue.global(qos: .background).async {
             let script =
             switch operation {
