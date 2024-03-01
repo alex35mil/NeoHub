@@ -138,6 +138,8 @@ final class SwitcherWindow: ObservableObject {
                     let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
                     application?.hide()           
             }
+        } else {
+            self.toggle()
         }
     }
     
