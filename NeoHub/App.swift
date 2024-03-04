@@ -10,7 +10,7 @@ let APP_BUNDLE_ID = Bundle.main.bundleIdentifier!
 extension KeyboardShortcuts.Name {
     static let togglePinnedWindow = Self(
         "togglePinnedWindow",
-        default: .init(.n, modifiers: [.command, .control])
+        default: .init(.z, modifiers: [.command, .control])
     )
 
     static let toggleSwitcher = Self(
