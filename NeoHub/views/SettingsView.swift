@@ -31,7 +31,15 @@ struct SettingsView: View {
                 Divider().padding(.horizontal)
 
                 HStack {
-                    Text("NeoHub Hotkey")
+                    Text("Neovide Hotkey")
+                    Spacer()
+                    KeyboardShortcuts.Recorder("", name: .togglePinnedWindow)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+
+                HStack {
+                    Text("NeoHub Switcher Hotkey")
                     Spacer()
                     KeyboardShortcuts.Recorder("", name: .toggleSwitcher)
                 }

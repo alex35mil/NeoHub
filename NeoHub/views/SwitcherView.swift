@@ -3,6 +3,7 @@ import KeyboardShortcuts
 
 struct Key {
     static let ESC: UInt16 = 53
+    static let TAB: UInt16 = 48
     static let ENTER: UInt16 = 36
     static let ARROW_UP: UInt16 = 126
     static let ARROW_DOWN: UInt16 = 125
@@ -105,12 +106,43 @@ final class SwitcherWindow: ObservableObject {
         window.standardWindowButton(.zoomButton)?.isHidden = true
 
         window.center()
+        
+        KeyboardShortcuts.onKeyDown(for: .togglePinnedWindow) { [self] in
+            self.handlePinnedWindowToggle()
+        }
 
-        KeyboardShortcuts.onKeyUp(for: .toggleSwitcher) { [self] in
+        KeyboardShortcuts.onKeyDown(for: .toggleSwitcher) { [self] in
             self.handleSwitcherToggle()
         }
     }
-
+    
+    private func handlePinnedWindowToggle() {
+        let editors = editorStore.getEditors(sortedFor: .pinned)
+        
+        if !editors.isEmpty {
+            let editor = editors.first!
+            let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
+            switch NSWorkspace.shared.frontmostApplication {
+                case .some(let app):
+                    if app.processIdentifier == editor.processIdentifier {
+                        application?.hide()
+                    } else {
+                        activationManager.setActivationTarget(
+                            currentApp: app,
+                            switcherWindow: self.selfRef,
+                            editors: editors
+                        )
+                        application?.activate()
+                    }
+                case .none:
+                    let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
+                    application?.hide()           
+            }
+        } else {
+            self.toggle()
+        }
+    }
+    
     private func handleSwitcherToggle() {
         let editors = editorStore.getEditors()
 
@@ -385,6 +417,9 @@ struct SwitcherListView: View {
                         if selectedIndex < self.filterEditors().count - 1 {
                             selectedIndex += 1
                         }
+                        return nil
+                    case Key.TAB:
+                        selectedIndex = (selectedIndex + 1) % self.filterEditors().count
                         return nil
                     case Key.ENTER:
                         let editors = self.filterEditors()
