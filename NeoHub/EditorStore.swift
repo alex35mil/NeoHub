@@ -88,7 +88,7 @@ final class EditorStore: ObservableObject {
 
                     process.executableURL = req.bin
 
-                    let nofork = "--nofork"
+                    let nofork = "--no-fork"
 
                     process.arguments = req.opts
 
