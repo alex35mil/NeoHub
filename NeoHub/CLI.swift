@@ -9,6 +9,10 @@ private struct Bin {
 private struct Lib {
     static let source = Bundle.main.bundlePath + "/Contents/Frameworks/NeoHubLib.framework"
     static let destination = "/usr/local/lib/NeoHubLib.framework"
+
+    static var parent: String {
+        return URL(fileURLWithPath: destination).deletingLastPathComponent().path
+    }
 }
 
 enum CLIOperation {
@@ -57,6 +61,7 @@ final class CLI: ObservableObject {
 
     static func getStatus() -> CLIStatus {
         let fs = FileManager.default
+
         let installed = fs.fileExists(atPath: Bin.destination) && fs.fileExists(atPath: Lib.destination)
 
         if !installed {
@@ -83,7 +88,7 @@ final class CLI: ObservableObject {
             let script =
             switch operation {
                 case .install:
-                    "do shell script \"cp -Rf \(Lib.source) \(Lib.destination) && cp -f \(Bin.source) \(Bin.destination)\" with administrator privileges"
+                    "do shell script \"mkdir -p \(Lib.parent) && cp -Rf \(Lib.source) \(Lib.destination) && cp -f \(Bin.source) \(Bin.destination)\" with administrator privileges"
                 case .uninstall:
                     "do shell script \"rm \(Bin.destination) && rm -rf \(Lib.destination)\" with administrator privileges"
             }

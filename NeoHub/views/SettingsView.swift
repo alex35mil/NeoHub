@@ -38,6 +38,14 @@ struct SettingsView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 10)
 
+                HStack {
+                    Text("Toggle Last Active Editor")
+                    Spacer()
+                    KeyboardShortcuts.Recorder("", name: .toggleLastActiveEditor)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+
                 Divider().padding(.horizontal)
 
                 HStack {

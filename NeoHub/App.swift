@@ -13,6 +13,11 @@ extension KeyboardShortcuts.Name {
         default: .init(.n, modifiers: [.command, .control])
     )
 
+    static let toggleLastActiveEditor = Self(
+        "toggleLastActiveEditor",
+        default: .init(.z, modifiers: [.command, .control])
+    )
+
     static let restartEditor = Self("restartEditor")
 }
 
