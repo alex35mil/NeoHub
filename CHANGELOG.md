@@ -1,5 +1,8 @@
 #  Changelog
 
+## 0.2.1
+- Add missing entitlement.
+
 ## 0.2.0
 - Update to the current Neovide.
 - Add hotkey to activate last used editor directly.
