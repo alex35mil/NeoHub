@@ -8,14 +8,14 @@ let APP_BUILD = Bundle.main.object(forInfoDictionaryKey: "GitCommitHash") as! St
 let APP_BUNDLE_ID = Bundle.main.bundleIdentifier!
 
 extension KeyboardShortcuts.Name {
-    static let togglePinnedWindow = Self(
-        "togglePinnedWindow",
-        default: .init(.z, modifiers: [.command, .control])
-    )
-
     static let toggleSwitcher = Self(
         "toggleSwitcher",
         default: .init(.n, modifiers: [.command, .control])
+    )
+
+    static let toggleLastActiveEditor = Self(
+        "toggleLastActiveEditor",
+        default: .init(.z, modifiers: [.command, .control])
     )
 
     static let restartEditor = Self("restartEditor")

@@ -106,19 +106,19 @@ final class SwitcherWindow: ObservableObject {
         window.standardWindowButton(.zoomButton)?.isHidden = true
 
         window.center()
-        
-        KeyboardShortcuts.onKeyDown(for: .togglePinnedWindow) { [self] in
-            self.handlePinnedWindowToggle()
+
+        KeyboardShortcuts.onKeyDown(for: .toggleLastActiveEditor) { [self] in
+            self.handleLastActiveEditorToggle()
         }
 
         KeyboardShortcuts.onKeyDown(for: .toggleSwitcher) { [self] in
             self.handleSwitcherToggle()
         }
     }
-    
-    private func handlePinnedWindowToggle() {
-        let editors = editorStore.getEditors(sortedFor: .pinned)
-        
+
+    private func handleLastActiveEditorToggle() {
+        let editors = editorStore.getEditors(sortedFor: .lastActiveEditor)
+
         if !editors.isEmpty {
             let editor = editors.first!
             let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
@@ -136,13 +136,13 @@ final class SwitcherWindow: ObservableObject {
                     }
                 case .none:
                     let application = NSRunningApplication(processIdentifier: editor.processIdentifier)
-                    application?.hide()           
+                    application?.hide()
             }
         } else {
             self.toggle()
         }
     }
-    
+
     private func handleSwitcherToggle() {
         let editors = editorStore.getEditors()
 

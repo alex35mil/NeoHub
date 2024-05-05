@@ -24,7 +24,7 @@ final class EditorStore: ObservableObject {
     public enum SortTarget {
         case menubar
         case switcher
-        case pinned
+        case lastActiveEditor
     }
 
     public func getEditors() -> [Editor] {
@@ -37,10 +37,9 @@ final class EditorStore: ObservableObject {
         switch sortTarget {
             case .menubar:
                 return editors.sorted { $0.name > $1.name }
-            case .pinned:
-                // Always return the last used editor, so we consider it as `pinned`
-                if let lastUsedEditor = editors.max(by: { $0.lastAcceessTime < $1.lastAcceessTime }) {
-                    return [lastUsedEditor]
+            case .lastActiveEditor:
+                if let lastActiveEditor = editors.max(by: { $0.lastAcceessTime < $1.lastAcceessTime }) {
+                    return [lastActiveEditor]
                 } else {
                     return []
                 }
