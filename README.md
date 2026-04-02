@@ -33,7 +33,7 @@ On the very first launch, you will be asked to install the CLI. You will need to
 ### CLI
 Once installed, the `neohub` command should become available in your shell. This is the only way to launch a Neovide through the NeoHub, so use `neohub` instead of `neovide` to launch editors. Otherwise, things won't work.
 
-See `neovide --help` for available options.
+See `neohub --help` for available options.
 
 ### App
 Hit `⌘ ⌃ N` (`Command + Control + N`) to open the editor switcher.
