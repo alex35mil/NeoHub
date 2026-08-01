@@ -114,6 +114,10 @@ final class SwitcherWindow: ObservableObject {
         KeyboardShortcuts.onKeyDown(for: .toggleSwitcher) { [self] in
             self.handleSwitcherToggle()
         }
+
+        KeyboardShortcuts.onKeyDown(for: .cycleNextEditor) { [self] in
+            self.handleCycleNextEditor()
+        }
     }
 
     private func handleLastActiveEditorToggle() {
@@ -172,6 +176,35 @@ final class SwitcherWindow: ObservableObject {
         } else {
             self.toggle()
         }
+    }
+
+    private func handleCycleNextEditor() {
+        // Cycling must use a stable order rather than recency (`.switcher`/MRU),
+        // since activating an editor immediately bumps its recency, which would
+        // turn the cycle into a 2-way ping-pong between the last two used editors.
+        let editors = editorStore.getEditors().sorted { $0.id.path < $1.id.path }
+
+        guard !editors.isEmpty else { return }
+
+        let currentApp = NSWorkspace.shared.frontmostApplication
+
+        let nextEditor: Editor
+        if
+            let currentApp = currentApp,
+            let currentIndex = editors.firstIndex(where: { $0.processIdentifier == currentApp.processIdentifier })
+        {
+            nextEditor = editors[(currentIndex + 1) % editors.count]
+        } else {
+            nextEditor = editors[0]
+        }
+
+        activationManager.setActivationTarget(
+            currentApp: currentApp,
+            switcherWindow: self.selfRef,
+            editors: editors
+        )
+
+        nextEditor.activate()
     }
 
     private func toggle() {
