@@ -114,6 +114,40 @@ final class SwitcherWindow: ObservableObject {
         KeyboardShortcuts.onKeyDown(for: .toggleSwitcher) { [self] in
             self.handleSwitcherToggle()
         }
+
+        KeyboardShortcuts.onKeyDown(for: .cycleNextEditor) { [self] in
+            self.handleCycleNextEditor()
+        }
+
+        // The Cmd+` shortcut is registered system-wide, so unless we disable it
+        // while some other app is frontmost, it monopolizes the key combo and
+        // that app (e.g. Chrome) would never receive its own Cmd+` handling.
+        self.updateCycleNextEditorShortcutState()
+
+        NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.didActivateApplicationNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.updateCycleNextEditorShortcutState()
+        }
+    }
+
+    private func updateCycleNextEditorShortcutState() {
+        guard let currentApp = NSWorkspace.shared.frontmostApplication else {
+            KeyboardShortcuts.disable(.cycleNextEditor)
+            return
+        }
+
+        let isEditorOrSelf =
+            currentApp.bundleIdentifier == APP_BUNDLE_ID ||
+            editorStore.getEditors().contains { $0.processIdentifier == currentApp.processIdentifier }
+
+        if isEditorOrSelf {
+            KeyboardShortcuts.enable(.cycleNextEditor)
+        } else {
+            KeyboardShortcuts.disable(.cycleNextEditor)
+        }
     }
 
     private func handleLastActiveEditorToggle() {
@@ -172,6 +206,35 @@ final class SwitcherWindow: ObservableObject {
         } else {
             self.toggle()
         }
+    }
+
+    private func handleCycleNextEditor() {
+        // Cycling must use a stable order rather than recency (`.switcher`/MRU),
+        // since activating an editor immediately bumps its recency, which would
+        // turn the cycle into a 2-way ping-pong between the last two used editors.
+        let editors = editorStore.getEditors().sorted { $0.id.path < $1.id.path }
+
+        guard !editors.isEmpty else { return }
+
+        let currentApp = NSWorkspace.shared.frontmostApplication
+
+        // Only cycle when we're already focused on one of the tracked editors,
+        // otherwise this would hijack Cmd+` from whatever app is currently active
+        // (e.g. Chrome) and force-switch to Neovide instead.
+        guard
+            let currentApp = currentApp,
+            let currentIndex = editors.firstIndex(where: { $0.processIdentifier == currentApp.processIdentifier })
+        else { return }
+
+        let nextEditor = editors[(currentIndex + 1) % editors.count]
+
+        activationManager.setActivationTarget(
+            currentApp: currentApp,
+            switcherWindow: self.selfRef,
+            editors: editors
+        )
+
+        nextEditor.activate()
     }
 
     private func toggle() {

@@ -46,6 +46,14 @@ struct SettingsView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 10)
 
+                HStack {
+                    Text("Cycle to Next Editor")
+                    Spacer()
+                    KeyboardShortcuts.Recorder("", name: .cycleNextEditor)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+
                 Divider().padding(.horizontal)
 
                 HStack {

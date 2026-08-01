@@ -18,6 +18,11 @@ extension KeyboardShortcuts.Name {
         default: .init(.z, modifiers: [.command, .control])
     )
 
+    static let cycleNextEditor = Self(
+        "cycleNextEditor",
+        default: .init(.backtick, modifiers: [.command])
+    )
+
     static let restartEditor = Self("restartEditor")
 }
 

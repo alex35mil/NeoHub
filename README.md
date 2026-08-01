@@ -13,8 +13,9 @@
 So, what NeoHub offers?
 1. Global hotkey to show a switcher between Neovide instances. You can hit this hotkey from anywhere and activate a project you need.
 2. Global hotkey to activate last used editor, if there are mulitple.
-3. Hotkey to restart current editor.
-4. CLI, which executes new Neovide instances, and if an instance at the current path is already running, it activates it instead of spawning a new one.
+3. Global hotkey to cycle directly between Neovide instances, similar to macOS's app switcher.
+4. Hotkey to restart current editor.
+5. CLI, which executes new Neovide instances, and if an instance at the current path is already running, it activates it instead of spawning a new one.
 
 ## Requirements
 - `macOS 13+`.
@@ -38,6 +39,7 @@ See `neohub --help` for available options.
 ### App
 Hit `⌘ ⌃ N` (`Command + Control + N`) to open the editor switcher.
 Hit `⌘ ⌃ Z` (`Command + Control + Z`) to activate last active editor.
+Hit `` ⌘ ` `` (`` Command + ` ``) to cycle directly to the next Neovide instance, without opening the switcher. This hotkey is only active while a Neovide instance (or NeoHub itself) is focused, so it won't interfere with the same shortcut in other apps.
 
 All hotkeys are configurable.
 
